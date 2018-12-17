@@ -1,5 +1,4 @@
 * {
-  margin: 0px;
   padding: 0px;
 }
 
@@ -9,14 +8,9 @@ header {
   display: flex;
   align-items: center;
   top: 0px;
-  lefT: 0px;
+  left: 0px;
   right: 0px;
-  height: 100px;
-}
-
-header * {
-  display: inline;
-}
+  }
 
 header li a {
   text-decoration: none;
@@ -26,15 +20,33 @@ header li a {
 body {
   margin-top: 100px;
   padding: 30px;
-  font-family: sans-serif; /* changed for readability */
-
+  font-family: sans-serif;
+  background-color: #C5FB7B;
+  /* changed for readability */
 }
 
-#title{
-font-size: 40px;
+#title {
+  font-size: 40px;
 }
 
-nav > ul > li {
+.menu {
+  display: none;
+}
+
+.menu.extended {
+  display: initial;
+}
+
+.icon {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+}
+
+/* header * {
+  display: inline;
+} */
+/* nav > ul > li {
   display: inline-block;
   list-style-type: none;
 }
@@ -51,4 +63,4 @@ nav > ul > li {
 
 nav > ul > li > ul {
   padding:0px;
-}
+} */
