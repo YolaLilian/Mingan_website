@@ -17,12 +17,7 @@ function insertReservationIntoDatabase ($conn, $first_name, $last_name, $phone_n
     VALUES ('$first_name', '$last_name', '$phone_number', '$email', '$newclient', '$treatment', '$date', '$time')";
     $result = mysqli_query($conn, $query)
     or die ('Error: ' . $query);
-    //If successful:
-//    if ($result) {
-//        header('Location: confirm_appointment.php');
-//        exit;
-//    }
-}
+   }
 
 // Checks to see if posted
 if (isset($_POST['submit'])) {
@@ -95,34 +90,50 @@ if (!empty($fieldErrors)) { ?>
     <link href="dist/css/datepicker.min.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-<h1>Maak een afspraak</h1>
-
-<form action="" method="post">
-    <label for="firstname">Voornaam</label>
-    <input id="firstname" type="text" name="firstname"><br>
-    <label for="lastname">Achternaam</label>
-    <input id="lastname" type="text" name="lastname"><br>
-    <label for="phone">Telefoonnummer</label>
-    <input id="phone" type="tel" pattern="^[0-9-+s()]*$" name="phonenumber" placeholder="bijv. 06-12345678"><br>
-    <label for="mail">Emailadres</label>
-    <input id="mail" type="email" name="emailadress" placeholder="email@adres.nl"><br>
-    <label for="newclient">Bent u een nieuwe klant?</label>
-    <!-- Want to display different options for new customers -->
-    <select name="newclient" id="newclient">
-        <option value="" selected="" disabled="" hidden="">Selecteer...</option>
-        <option id="noCheck">Nee</option>
-        <option id="yesCheck">Ja</option>
-    </select><br>
-    <label for="treatment">Behandeling</label>
-    <div id="treatmentselect">
-        <!-- empty div for javascript usability -->
-    </div><br>
-    <label for="datepicker">Datum</label>
-    <input id="datepicker" type='text' name="date" class="datepicker-here" data-position="right top" data-language='nl' data-inline="true">
-    <label for="time">Tijdslot</label>
-    <input id="time" type="time" name="time"><br>
-    <input type="submit" name="submit" value="Verzenden">
-</form>
+<?php
+    if (isset($_POST['submit']) && (empty($fieldErrors))) { ?>
+        <!-- show input when submitted succesfully -->
+        <h1>Gelukt!</h1>
+        <h2>Uw gemaakte afspraak</h2>
+        <p>Voornaam is <?=$first_name?></p>
+        <p>Achternaam is <?=$last_name?></p>
+        <p>Telefoonnummer is <?=$phone_number?></p>
+        <p>Emailadres is <?=$email?></p>
+        <p>U bent een nieuwe client: <?=$newclient?></p>
+        <p>Behandeling is <?=$treatment?></p>
+        <p>Gekozen datum is <?=$date?></p>
+        <p>Gekozen tijd is <?=$time?></p>
+<?php }
+    else { ?>
+        <!-- show form -->
+        <h1>Maak een afspraak</h1>
+        <form action="" method="post">
+            <label for="firstname">Voornaam</label>
+            <input id="firstname" type="text" name="firstname"><br>
+            <label for="lastname">Achternaam</label>
+            <input id="lastname" type="text" name="lastname"><br>
+            <label for="phone">Telefoonnummer</label>
+            <input id="phone" type="tel" pattern="^[0-9-+s()]*$" name="phonenumber" placeholder="bijv. 06-12345678"><br>
+            <label for="mail">Emailadres</label>
+            <input id="mail" type="email" name="emailadress" placeholder="email@adres.nl"><br>
+            <label for="newclient">Bent u een nieuwe klant?</label>
+            <!-- Want to display different options for new customers -->
+            <select name="newclient" id="newclient">
+                <option value="" selected="" disabled="" hidden="">Selecteer...</option>
+                <option id="noCheck">Nee</option>
+                <option id="yesCheck">Ja</option>
+            </select><br>
+            <label for="treatment">Behandeling</label>
+            <div id="treatmentselect">
+                <!-- empty div for javascript usability -->
+            </div><br>
+            <label for="datepicker">Datum</label>
+            <input id="datepicker" type='text' name="date" class="datepicker-here" data-position="right top" data-language='nl' data-inline="true">
+            <label for="time">Tijdslot</label>
+            <input id="time" type="time" name="time"><br>
+            <input type="submit" name="submit" value="Verzenden">
+        </form>
+<?php } ?>
 <script src="dist/js/jquery-3.3.1.min.js"></script>
 <script src="dist/js/datepicker.min.js"></script>
 <script src="dist/js/i18n/datepicker.nl.js"></script>
