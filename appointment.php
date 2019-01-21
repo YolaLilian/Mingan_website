@@ -35,13 +35,6 @@ if (isset($_POST['submit'])) {
     $treatment = $_POST['treatment'];
     $date = $_POST['date'];
     $time = $_POST['time'];
-
-    insertReservationIntoDatabase($conn, $first_name, $last_name, $phone_number, $email,
-        $newclient, $treatment, $date, $time);
-}
-
-// Give error when not filled in
-if (!empty($_POST)){
     $postFields = [
         [
             "name" => "firstname",
@@ -71,12 +64,15 @@ if (!empty($_POST)){
             "name" => "time",
             "descriptiveName" => "Tijdslot"
         ],
-
     ];
     foreach ($postFields as $postField) {
         if (empty($_POST[$postField["name"]])) {
             $fieldErrors[] = "{$postField["descriptiveName"]} is niet ingevuld!\r\n";
         }
+    }
+    if (empty($fieldErrors)) {
+        insertReservationIntoDatabase($conn, $first_name, $last_name, $phone_number, $email,
+            $newclient, $treatment, $date, $time);
     }
 }
 
