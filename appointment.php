@@ -1,6 +1,6 @@
 <?php
 include_once "db_connection.php";
-
+// Create a function to insert input into database
 function insertReservationIntoDatabase ($conn, $first_name, $last_name, $phone_number, $email, $newclient, $treatment, $date, $time){
     // be safe, use an escape_string, kids!
     $first_name = mysqli_escape_string($conn, $first_name);
@@ -12,7 +12,7 @@ function insertReservationIntoDatabase ($conn, $first_name, $last_name, $phone_n
     $date = mysqli_escape_string($conn, $date);
     $time = mysqli_escape_string($conn, $time);
 
-    // Make query
+    // Make a query (still belongs to the function above)
     $query = "INSERT INTO appointments (firstname, lastname, phonenumber, email, newclient, treatment, date_x, time_x)
     VALUES ('$first_name', '$last_name', '$phone_number', '$email', '$newclient', '$treatment', '$date', '$time')";
     $result = mysqli_query($conn, $query)
@@ -31,6 +31,7 @@ if (isset($_POST['submit'])) {
     $date = $_POST['date'];
     $time = $_POST['time'];
     $postFields = [
+        // made to display errors in dutch
         [
             "name" => "firstname",
             "descriptiveName" => "Voornaam"
@@ -60,17 +61,19 @@ if (isset($_POST['submit'])) {
             "descriptiveName" => "Tijdslot"
         ],
     ];
+
     foreach ($postFields as $postField) {
         if (empty($_POST[$postField["name"]])) {
             $fieldErrors[] = "{$postField["descriptiveName"]} is niet ingevuld!\r\n";
         }
     }
+    // When there are no errors, insert into database
     if (empty($fieldErrors)) {
         insertReservationIntoDatabase($conn, $first_name, $last_name, $phone_number, $email,
             $newclient, $treatment, $date, $time);
     }
 }
-
+// displays errors in an unordered list
 if (!empty($fieldErrors)) { ?>
 <ul class="error">
     <?php
@@ -125,7 +128,7 @@ if (!empty($fieldErrors)) { ?>
             </select><br>
             <label for="treatment">Behandeling</label>
             <div id="treatmentselect">
-                <!-- empty div for javascript usability -->
+                <!-- Empty div for javascript usability -->
             </div><br>
             <label for="datepicker">Datum</label>
             <input id="datepicker" type='text' name="date" class="datepicker-here" data-position="right top" data-language='nl' data-inline="true">
