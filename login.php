@@ -9,7 +9,7 @@ if (isset($_SESSION['uname'])) {
 }
 
 if (isset($_POST['submit'])) {
-    //Retrieve values (email safe for query)
+    //Retrieve values (username safe for query)
     $uname = mysqli_escape_string($conn, $_POST['uname']);
     $password = $_POST['password'];
 
