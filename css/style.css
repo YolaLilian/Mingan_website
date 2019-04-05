@@ -240,7 +240,7 @@ img {
     background-color: #ffffff;
     padding-top: 5px;
     margin-left: 0px;
-    
+
   } 
   
   body {
@@ -283,8 +283,8 @@ img {
     display: none;
   } 
   
-  li:hover {
-    background-color: #0E6D50;
+  nav li:hover {
+    background-color: #2EA782;
   }
 
   li:hover > a {
