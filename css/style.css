@@ -1,111 +1,522 @@
-* {
-  padding: 0px;
-}
+/* Mobile Version */
 
-header {
-  background-color: #FBFB8D;
-  position: fixed;
-  top: 0px;
-  left: 0px;
-  right: 0px;
-  padding-bottom: 25px;
-  }
+@media only screen and (max-width: 599px) {
 
-header li a {
-  text-decoration: none;
-  display: block;
-}
-
-body {
-  margin-top: 100px;
-  padding: 30px;
-  font-family: sans-serif;
-  font-size: 20px;
-  background-color: #FBFB8D;
-  /* changed for readability */
-}
-
-#title {
-  margin: 40px 0 0 40px;
-  font-size: 60px;
+ header {
+  width: 100vw;
+  left: 30px;
 }
 
 nav {
-  margin: 40px 0 0 0;
+  position: fixed;
+  left: 0px;
+  width: 100%;
+  height: auto;
+  top: 0px;
+  left: 0px;
+  font-family: 'Abel', sans-serif;
+  background-color: #ffffff;
+  padding-top: 10px;
+  padding-left: 10px;
+  margin-left: 0px;
 }
 
-.menu {
+nav > ul {
+  list-style-type: none;
+  padding-left: 10px;
+}
+
+nav > a {
+  padding: 10px 5px;
+  margin: 10px 0px;
+}
+
+.menu.hidden > li {
   display: none;
 }
 
-.menu.extended {
-  display: initial;
+ul.serviceDropdown {
+  list-style-type: none;
 }
 
-.icon {
-  position: absolute;
-  right: 20px;
-  top: 20px;
+.serviceDropdown.hidden > li {
+  display: none;
+  text-indent: 40px;
 }
 
-ul {
-  margin-left: 40px;
-  }
-
-tr:nth-child(even) {background: #FBE14E}
-tr:nth-child(odd) {background: #FEEB86}
-
-table, th, td {
-  border: 1px solid black;
-  border-collapse: collapse;
+#titleNav {
+  display: none; 
 }
 
-th {
-  height: 30px;
-  width: 80vw;
+body {
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+  cursor: pointer;
+  font-size: 20px;
+  padding: 10px;
+  color: #2EA782;
+  font-family: 'Abel', sans-serif;
+}
+
+#hero {
+  width: 100vw;
+  height: 100vh;
+  font-size: 50px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  font-family: 'Abel', sans-serif;
+  align-items: center;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5),rgba(0, 0, 0, 0.5)), url(https://images.unsplash.com/photo-1469733881637-10c8de93222c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1489&q=80);
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  left: 0;
+  margin-left: 0;
+  padding-left: 0;
+  color: white;
+} 
+
+h1 {
+  font-size: 36px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  font-family: 'Abel', sans-serif;
+  padding-top: 30px;
+}
+
+h2 {
+  text-align: center;
+  font-family: 'Karla', sans-serif;
+}
+
+h3 {
+  text-align: center;
+  font-family: 'Karla', sans-serif;
+}
+
+#reiki ul {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  font-size: 20px;
+  font-style: italic;
+}
+
+.linkTo {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
+.treatment {
+  border: 3px solid #2EA782;
+  background-color: #2EA782;
+  box-shadow: 5px -5px 5px 0px #ECECEC;
+  color: white;
+  padding: 35px;
+  font-family: 'Abel', sans-serif;
+  margin: 20px 15px;
+  text-align: left;
+}
+
+.treatment > li {
+  font-size: 30px;
+}
+
+.treatment > p {
+  text-align: justify;
+  padding: 15px;
 }
 
 table {
-  font-size: 30px;
-  overflow-x: scroll;
-  column-width: 80vw;
+  table-layout: fixed;
+  width: 100%;
+  border-collapse: collapse;
+  font-family: 'Abel', sans-serif;
 }
 
-a link {
-  color: hotpink;
+thead th:nth-child(1) {
+  width: 30%;
 }
 
-a:visited {
-  color: hotpink;
+thead th:nth-child(2) {
+  width: 20%;
 }
-/* Changing screen size */
+
+thead th:nth-child(3) {
+  width: 20%;
+}
+
+th, td {
+  padding: 15px;
+}
+
+th {
+  letter-spacing: 2px;
+}
+
+td {
+  letter-spacing: 1px;
+}
+
+tbody {
+  text-align: center;
+}
+
+p {
+  font-size: 20px;
+  padding: 30px;
+  text-align: center;
+  font-family: 'Abel', sans-serif;
+  text-align: justify;
+}
+
+#Anders ul {
+  list-style-type: circle;
+  font-size: 20px;
+  font-family: 'Abel', sans-serif;
+  margin-left: 50px;
+}
+
+#contact p {
+  padding: 10px;
+  margin: 5px;
+  text-align: center;
+}
+
+#who p, #Anders p, #pricing p, #duobehandeling p {
+  margin: 5px;
+  padding: 10px;
+  text-align: center;
+}
+
+img {
+  display: none;
+}
+
+.question {
+  background-color: #2EA782;
+  color: white;
+  margin: 10px;
+}
+
+.answers{
+  font-family: 'Abel', sans-serif;
+  font-size: 20px;
+  text-align: center;
+} 
+
+.results {
+  text-align: center;
+}
+
+.resultHeader {
+  font-style: bold;
+}
+}
+
+/* Desktop Version */
 
 @media only screen and (min-width: 600px) {
 
- header * {
-  display: inline;
-}
- nav > ul > li {
-  display: inline-block;
-  list-style-type: none;
-}
+  header {
+    display: inline;
+  }
+  
+  nav {
+    position: fixed;
+    left: 0px;
+    width: 100%;
+    height: auto;
+    top: 0px;
+    left: 0px;
+    font-family: 'Abel', sans-serif;
+    background-color: #ffffff;
+    padding-top: 5px;
+    margin-left: 0px;
+    
+  } 
+  
+  body {
+    margin:0;
+  }
+  
+  nav > ul {
+    list-style-type: none;
+    padding-left: 10px;
+    font-size: 30px;
+    display: flex;
+    justify-content: space-evenly;
+  }
+  
+  nav > a {
+    padding: 10px 5px;
+    margin: 10px 0px;
+    font-size: 5vw;
+  }
 
-.dropdown > ul {
-  display: none;
-  position: absolute;
-  list-style-type: none;
-}
+  .menu.hidden > li {
+    display: inline;
+  }  
 
-.dropdown:hover > ul {
-  display: block;
-}
+  .serviceDropdown {
+    list-style-type: none;
+    padding-inline-start: 0;
+    position: absolute;
+    margin-left: -10px;
+    margin-top: 10px;
+    background-color: white;
+  }
 
-nav > ul > li > ul {
-  padding:0px;
-}
+  .serviceDropdown.hidden {
+    display: block;
+    position: absolute;
+  }
 
-p, li {
-font-size: 15px;
-}
+  .serviceDropdown.hidden > li {
+    display: none;
+  } 
+  
+  li:hover {
+    background-color: #0E6D50;
+  }
 
-margin: 50px 100px;
+  li:hover > a {
+    color: white;
+  }
+
+  header {
+    background-color: white;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 80px;
+    display: flex;
+    align-items: center;
+  }
+
+  header li {
+    padding: 10px;
+  }
+
+  .icon {
+    display: none;
+  }
+
+  #title {
+    display: none;
+  }
+  
+  #hero {
+    height: 100vh;
+    font-size: 50px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    font-family: 'Abel', sans-serif;
+    align-items: center;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5),rgba(0, 0, 0, 0.5)), url(https://images.unsplash.com/photo-1469733881637-10c8de93222c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1489&q=80);
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    left: 0;
+    padding-left: 0px;
+    color: white;
+  }
+
+  a {
+    text-decoration: none;
+    padding: 10px;
+    color: #2EA782;
+    font-family: 'Abel', sans-serif;
+  }
+  
+  h2 {
+    text-align: center;
+    font-family: 'Karla', sans-serif;
+  }
+  
+  h3 {
+    text-align: center;
+    font-family: 'Karla', sans-serif;
+    font-size: 28px;
+  }
+
+  .linkTo {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    font-size: 25px;
+  }
+  
+  #services {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .treatment {
+    border: 3px solid #2EA782;
+    background-color: #2EA782;
+    box-shadow: 5px -5px 5px 0px #ECECEC; 
+    color: white;
+    font-family: 'Abel', sans-serif;
+    text-align: left;
+    width: 500px;
+    padding: 20px;
+    width: 35vw;
+    height: 80%;
+    margin: 10px;
+  }
+
+  #massage > .treatment , #animal > .treatment {
+    height: 50%;
+  }
+
+  #reiki > .treatment {
+    width: 81vw;
+    height: 60vh;
+  }
+
+  .treatment > li {
+    font-size: 25px;
+  }
+  
+  .treatment > p {
+    text-align: justify;
+    padding: 15px;
+  }
+  
+  #reiki ul {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    font-size: 21px;
+    font-style: italic;
+  } 
+  
+  table {
+    table-layout: fixed;
+    border-collapse: collapse;
+    font-family: 'Abel', sans-serif;
+    font-size: 25px;
+  }
+  
+  thead th:nth-child(1) {
+    width: 25%;
+  }
+  
+  thead th:nth-child(2) {
+    width: 25%;
+  }
+  
+  thead th:nth-child(3) {
+    width: 25%;
+  }
+  
+  th, td {
+    padding: 15px;
+  }
+
+  th {
+    letter-spacing: 2px;
+  }
+  
+  p {
+    font-size: 25px;
+    padding: 30px;
+    font-family: 'Abel', sans-serif;
+  }
+  
+  #Anders ul {
+    list-style-type: circle;
+    font-size: 25px;
+    font-family: 'Abel', sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  #appointment h3 {
+    margin-top:35px;
+  }
+  
+  #contact p {
+    padding: 10px;
+    margin: 25px;
+    text-align: center;
+  }
+  
+ .karla-img {
+    box-shadow: 5px -5px 5px 0px #ECECEC;
+    border-radius: 50%;
+    float: right; 
+    width: 20%;
+    height: 20%;
+    margin: 30px 0 8px 15px;
+  }
+
+  #who p{
+    text-align: justify;
+  }
+
+  .whiteSection {
+    max-width: 900px;
+    margin: auto;
+    text-align: center;
+  }
+  
+  .question {
+    background-color: #2EA782;
+    color: white;
+    margin: 10px 20px;
+    height: 100px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+  }
+  
+  .answers{
+    font-family: 'Abel', sans-serif;
+    font-size: 25px;
+    text-align: center;
+    padding: 15px 30px;
+  }
+
+  #quiz h1{
+    font-size: 40px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    font-family: 'Abel', sans-serif;
+    padding-top: 30px;
+  }
+
+  #quiz p {
+    text-align: center;
+  }
+
+  #quiz.question p {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+  }
+} 
+
+@media only screen and (min-width: 600px) and (max-width: 1199px) {
+
+  nav > ul {
+    font-size: 20px;
+  }
+  
+}

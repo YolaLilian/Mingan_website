@@ -1,6 +1,6 @@
 <?php
 
-include_once "db_connection.php";
+include_once "include/db_connection.php";
 
 if (!empty($_GET["id"])) {
     $id = mysqli_escape_string($conn, $_GET["id"]);

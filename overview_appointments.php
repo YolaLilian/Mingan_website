@@ -1,6 +1,6 @@
 <?php
 
-include_once "db_connection.php";
+include_once "include/db_connection.php";
 include_once "include/need_login.php";
 
 $sql = "SELECT * FROM appointments";

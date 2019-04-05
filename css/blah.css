@@ -1,0 +1,45 @@
+header {
+  width: 100vw;
+  left: 30px;
+}
+
+nav {
+  position: fixed;
+  left: 0px;
+  width: 100%;
+  height: auto;
+  top: 0px;
+  left: 0px;
+  font-family: 'Abel', sans-serif;
+  background-color: #ffffff;
+  padding-top: 10px;
+  padding-left: 10px;
+  margin-left: 0px;
+}
+
+nav > ul {
+  list-style-type: none;
+  padding-left: 10px;
+}
+
+nav > a {
+  padding: 10px 5px;
+  margin: 10px 0px;
+}
+
+.menu.hidden > li {
+  display: none;
+}
+
+ul.serviceDropdown {
+  list-style-type: none;
+}
+
+.serviceDropdown.hidden > li {
+  display: none;
+  text-indent: 40px;
+}
+
+#titleNav {
+  display: none; 
+}

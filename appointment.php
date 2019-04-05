@@ -1,5 +1,5 @@
 <?php
-include_once "db_connection.php";
+include_once "include/db_connection.php";
 // Create a function to insert input into database
 function insertReservationIntoDatabase ($conn, $first_name, $last_name, $phone_number, $email, $newclient, $treatment, $date, $time){
     // be safe, use an escape_string, kids!
