@@ -3,13 +3,12 @@
 }
 
 header {
-  background-color: #C5FB7B;
+  background-color: #FBFB8D;
   position: fixed;
-  display: flex;
-  align-items: center;
   top: 0px;
   left: 0px;
   right: 0px;
+  padding-bottom: 25px;
   }
 
 header li a {
@@ -21,12 +20,18 @@ body {
   margin-top: 100px;
   padding: 30px;
   font-family: sans-serif;
-  background-color: #C5FB7B;
+  font-size: 20px;
+  background-color: #FBFB8D;
   /* changed for readability */
 }
 
 #title {
-  font-size: 40px;
+  margin: 40px 0 0 40px;
+  font-size: 60px;
+}
+
+nav {
+  margin: 40px 0 0 0;
 }
 
 .menu {
@@ -43,10 +48,44 @@ body {
   top: 20px;
 }
 
-/* header * {
+ul {
+  margin-left: 40px;
+  }
+
+tr:nth-child(even) {background: #FBE14E}
+tr:nth-child(odd) {background: #FEEB86}
+
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
+th {
+  height: 30px;
+  width: 80vw;
+}
+
+table {
+  font-size: 30px;
+  overflow-x: scroll;
+  column-width: 80vw;
+}
+
+a link {
+  color: hotpink;
+}
+
+a:visited {
+  color: hotpink;
+}
+/* Changing screen size */
+
+@media only screen and (min-width: 600px) {
+
+ header * {
   display: inline;
-} */
-/* nav > ul > li {
+}
+ nav > ul > li {
   display: inline-block;
   list-style-type: none;
 }
@@ -63,4 +102,10 @@ body {
 
 nav > ul > li > ul {
   padding:0px;
-} */
+}
+
+p, li {
+font-size: 15px;
+}
+
+margin: 50px 100px;
