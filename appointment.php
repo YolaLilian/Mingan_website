@@ -1,5 +1,8 @@
 <?php
+
 include_once "include/db_connection.php";
+include_once "include/secrets.php";
+require("sendgrid-php/sendgrid-php.php");
 // Create a function to insert input into database
 function insertReservationIntoDatabase ($conn, $first_name, $last_name, $phone_number, $email, $newclient, $treatment, $date, $time){
     // be safe, use an escape_string, kids!
@@ -67,6 +70,7 @@ if (isset($_POST['submit'])) {
             $fieldErrors[] = "{$postField["descriptiveName"]} is niet ingevuld!\r\n";
         }
     }
+
     // When there are no errors, insert into database
     if (empty($fieldErrors)) {
         insertReservationIntoDatabase($conn, $first_name, $last_name, $phone_number, $email,
@@ -96,18 +100,52 @@ if (!empty($fieldErrors)) { ?>
 <?php
     if (isset($_POST['submit']) && (empty($fieldErrors))) { ?>
         <!-- show input when submitted succesfully -->
-        <h1>Gelukt!</h1>
-        <h2>Uw gemaakte afspraak</h2>
-        <p>Voornaam is <?=$first_name?></p>
-        <p>Achternaam is <?=$last_name?></p>
-        <p>Telefoonnummer is <?=$phone_number?></p>
-        <p>Emailadres is <?=$email?></p>
-        <p>U bent een nieuwe client: <?=$newclient?></p>
-        <p>Behandeling is <?=$treatment?></p>
-        <p>Gekozen datum is <?=$date?></p>
-        <p>Gekozen tijd is <?=$time?></p>
-<?php }
-    else { ?>
+        <h2>Gelukt!</h2>
+        <h3>Uw gemaakte afspraak</h3>
+        <p>Voornaam is <?= htmlentities($first_name) ?></p>
+        <p>Achternaam is <?= htmlentities($last_name) ?></p>
+        <p>Telefoonnummer is <?= htmlentities($phone_number) ?></p>
+        <p>Emailadres is <?= htmlentities($email) ?></p>
+        <p>U bent een nieuwe client: <?= htmlentities($newclient) ?></p>
+        <p>Behandeling is <?= htmlentities($treatment) ?></p>
+        <p>Gekozen datum is <?= htmlentities($date) ?></p>
+        <p>Gekozen tijd is <?= htmlentities($time) ?></p>
+
+<?php $newemail = new SendGrid\Mail\Mail();
+    $newemail->setFrom($send_email_from, "Mingan Reiki");
+    $newemail->setSubject("Uw gemaakte afspraak bij Mingan Reiki");
+    $newemail->addTo("$email", "$first_name $last_name");
+    $newemail->addContent("text/plain", "
+    Beste $first_name,<br>
+    Bedankt voor uw afspraak bij Mingan Reiki! <br>
+    Uw naam is $first_name $last_name;<br>
+    Uw telefoonnummer is $phone_number;<br>
+    U bent een nieuwe client: $newclient;<br>
+    Uw gekozen behandeling is $treatment;<br>
+    Uw gekozen datum en tijd is $date $time.<br>
+    Als u verhindert bent, neem dan bijtijds contact op met mij via 06-47179161.<br>
+    Reageer niet op deze email!<br>
+    Graag tot ziens bij Mingan Reiki!<br>
+    Vriendelijke groet, Karla");
+        $newemail->addContent("text/html", "Beste $first_name,<br>
+    Bedankt voor uw afspraak bij Mingan Reiki!<br>
+    Uw naam is $first_name $last_name;<br>
+    Uw telefoonnummer is $phone_number;<br>
+    U bent een nieuwe client: $newclient;<br>
+    Uw gekozen behandeling is $treatment;<br>
+    Uw gekozen datum en tijd is $date $time.<br>
+    Als u verhindert bent, neem dan bijtijds contact op met mij via 06-47179161.<br>
+    <strong>Reageer niet op deze email!</strong><br>
+    Graag tot ziens bij Mingan Reiki!<br>
+    Vriendelijke groet, Karla");
+        $sendgrid = new SendGrid($api_key);
+        ?>
+
+<?php try {
+    $response = $sendgrid->send($newemail);} catch (Exception $e) {
+        echo 'Caught exception: '. $e->getMessage() ."\n";
+        }
+    } else { ?>
         <!-- show form -->
         <h1>Maak een afspraak</h1>
         <form action="" method="post">
