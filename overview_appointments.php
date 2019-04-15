@@ -54,6 +54,7 @@ if ($result->num_rows > 0) {
             <td><?= $appointment['treatment']; ?></td>
             <td><?= $appointment['date_x']; ?></td>
             <td><?= $appointment['time_x']; ?></td>
+            <td><a href="edit.php?id=<?= $appointment['id']; ?>">Bewerk de afspraak</a></td>
             <td><a href="delete.php?id=<?= $appointment['id']; ?>">Verwijder de afspraak</a></td>
         </tr>
     <?php }?>

@@ -35,7 +35,26 @@
   </nav>
   </header>
 <section id="hero">
+    <div id="ïnnerHero">
     <h1>Welkom bij Reiki Mingan</h1>
+    <?php // create curl resource
+        $ch = curl_init();
+
+        // set url
+        curl_setopt($ch, CURLOPT_URL, "http://quotes.rest/qod?category=life");
+
+        //return the transfer as a string
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+
+        // $output contains the output string
+        $output = curl_exec($ch);
+
+        // close curl resource to free up system resources
+        curl_close($ch);
+
+        $obj = json_decode($output); ?>
+    <p id="quote">"<?= $obj->contents->quotes[0]->quote?>"</p>
+    </div>
 </section>
 <section id="services">
   <section id="reiki">
@@ -291,6 +310,12 @@
     <p>Email: karlagraper@gmail.com</p>
 </section>
   <a class="linkTo" href="login.php">Log in Admin</a>
+  <footer>
+      <p>Deze website is gecreëerd door Lilian Kempees. Quotes by <span style="z-index:50;">
+      <img src="https://theysaidso.com/branding/theysaidso.png" height="20" width="20" alt="theysaidso.com"/>
+      <a href="https://theysaidso.com" title="Powered by quotes from theysaidso.com" style="color: #9fcc25; margin-left: 4px; vertical-align: middle;">theysaidso.com</a></span></p></footer>
 <script src="js/master.js" charset="utf-8"></script>
+
 </body>
+
 </html>
