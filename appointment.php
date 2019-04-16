@@ -110,7 +110,8 @@ if (!empty($fieldErrors)) { ?>
         <p>Behandeling is <?= htmlentities($treatment) ?></p>
         <p>Gekozen datum is <?= htmlentities($date) ?></p>
         <p>Gekozen tijd is <?= htmlentities($time) ?></p>
-        <p>Er is een email verzonden. Het kan zijn dat deze in uw spamfolder terechtgekomen is, of dat uw mail</p>
+        <p>Er is een email verzonden met uw ingevoerde gegevens. Het kan zijn dat deze in uw spamfolder terechtgekomen is, of dat uw emailprovider
+            ons emailadres blokkeert. Noteer hierom ook uw afspraak in uw agenda!</p>
 
 <?php $newemail = new SendGrid\Mail\Mail();
     $newemail->setFrom($send_email_from, "Mingan Reiki");
