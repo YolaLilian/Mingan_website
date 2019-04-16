@@ -35,26 +35,24 @@
   </nav>
   </header>
 <section id="hero">
-    <div id="ïnnerHero">
     <h1>Welkom bij Reiki Mingan</h1>
-    <?php // create curl resource
-        $ch = curl_init();
+    <?php  // create curl resource
+    $ch = curl_init();
 
-        // set url
-        curl_setopt($ch, CURLOPT_URL, "http://quotes.rest/qod?category=life");
+    // set url
+    curl_setopt($ch, CURLOPT_URL, "http://quotes.rest/qod?category=life");
 
-        //return the transfer as a string
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+    //return the transfer as a string
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 
-        // $output contains the output string
-        $output = curl_exec($ch);
+    // $output contains the output string
+    $output = curl_exec($ch);
 
-        // close curl resource to free up system resources
-        curl_close($ch);
+    // close curl resource to free up system resources
+    curl_close($ch);
 
-        $obj = json_decode($output); ?>
+    $obj = json_decode($output); ?>
     <p id="quote">"<?= $obj->contents->quotes[0]->quote?>"</p>
-    </div>
 </section>
 <section id="services">
   <section id="reiki">

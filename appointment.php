@@ -110,6 +110,7 @@ if (!empty($fieldErrors)) { ?>
         <p>Behandeling is <?= htmlentities($treatment) ?></p>
         <p>Gekozen datum is <?= htmlentities($date) ?></p>
         <p>Gekozen tijd is <?= htmlentities($time) ?></p>
+        <p>Er is een email verzonden. Het kan zijn dat deze in uw spamfolder terechtgekomen is, of dat uw mail</p>
 
 <?php $newemail = new SendGrid\Mail\Mail();
     $newemail->setFrom($send_email_from, "Mingan Reiki");
@@ -139,9 +140,8 @@ if (!empty($fieldErrors)) { ?>
     Graag tot ziens bij Mingan Reiki!<br>
     Vriendelijke groet, Karla");
         $sendgrid = new SendGrid($api_key);
-        ?>
 
-<?php try {
+    try {
     $response = $sendgrid->send($newemail);} catch (Exception $e) {
         echo 'Caught exception: '. $e->getMessage() ."\n";
         }
